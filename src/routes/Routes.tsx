@@ -5,18 +5,16 @@ import Home from "../screens/Home";
 import Profile from "../screens/Profile";
 
 // Optional Fallback Loading component to show while the connection is being established
-// const FallbackLoadingComponent = () => <p>Loading...</p>;
+const FallbackLoadingComponent = () => <p>Loading...</p>;
 
-// const { Navigator, Screen } = createStackNavigator<NavigationProps>(
-//   <FallbackLoadingComponent />
-// );
-
-const { Navigator, Screen } = createStackNavigator<NavigationProps>();
+const { Navigator, Screen } = createStackNavigator<NavigationProps>(
+  <FallbackLoadingComponent />
+);
 
 const Routes: React.FC = () => {
   return (
     <Navigator>
-      <Screen name="Home" component={Home} iframeHeight={520} />
+      <Screen name="Home" component={Home} iframeHeight={500} />
       <Screen name="Profile" component={Profile} iframeHeight={420} />
     </Navigator>
   );
