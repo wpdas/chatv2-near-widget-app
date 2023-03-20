@@ -14,8 +14,8 @@ const { Navigator, Screen } = createStackNavigator<NavigationProps>(
 const Routes: React.FC = () => {
   return (
     <Navigator>
-      <Screen name="Home" component={Home} iframeHeight={420} />
-      <Screen name="Profile" component={Profile} />
+      <Screen name="Home" component={Home} iframeHeight={780} />
+      <Screen name="Profile" component={Profile} iframeHeight={420} />
     </Navigator>
   );
 };

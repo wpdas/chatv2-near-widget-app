@@ -29,8 +29,8 @@ const Home: React.FC<PreHomeScreenProps> = () => {
       <p>This is the Home Page</p>
       {userInfo && (
         <>
-          <p>User ID: {userInfo?.accountId}</p>
-          <p>User Name: {userInfo?.profileInfo.name}</p>
+          <p>User ID: {userInfo?.accountId || "Not logged in"}</p>
+          <p>User Name: {userInfo?.profileInfo?.name || "Not logged in"}</p>
         </>
       )}
 
