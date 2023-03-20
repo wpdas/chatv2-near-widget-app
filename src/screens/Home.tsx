@@ -19,8 +19,8 @@ const Home: React.FC<PreHomeScreenProps> = () => {
   const goToProfileHandler = () => {
     // Go to Profile page passing some props
     navigation.push("Profile", {
-      userName: userInfo?.profileInfo.name,
-      ipfsCidAvatar: userInfo?.profileInfo.image.ipfs_cid,
+      userName: userInfo?.profileInfo?.name || "Not logged in",
+      ipfsCidAvatar: userInfo?.profileInfo?.image.ipfs_cid || undefined,
     });
   };
 
