@@ -3,7 +3,10 @@ import { IFrameStackScreenProps } from "near-social-bridge/navigation";
 // Navigation props
 export type NavigationProps = {
   Home: undefined;
-  Profile: {
+  CreateRoom: {
+    roomId: string;
+  };
+  Room: {
     ipfsCidAvatar?: string;
     userName?: string;
   };
@@ -15,7 +18,9 @@ export type PreHomeScreenProps = IFrameStackScreenProps<
   "Home"
 >;
 
-export type ProfileScreenProps = IFrameStackScreenProps<
+export type CreateRoomScreenProps = IFrameStackScreenProps<
   NavigationProps,
-  "Profile"
+  "CreateRoom"
 >;
+
+export type RoomScreenProps = IFrameStackScreenProps<NavigationProps, "Room">;
