@@ -32,6 +32,7 @@ const Header: React.FC<Props> = ({ hideButtons, onOpenCreateRoomModal }) => {
           href="https://github.com/wpdas/near-social-bridge"
           target="_blank"
           textDecoration="underline"
+          rel="noopener noreferrer"
         >
           near-social-bridge
         </Link>
