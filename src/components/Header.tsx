@@ -1,4 +1,4 @@
-import { Box, Button, Heading } from "@chakra-ui/react";
+import { Box, Button, Heading, Link, Text } from "@chakra-ui/react";
 import useTypedNavigation from "../hooks/useTypedNavigator";
 
 type Props = {
@@ -26,6 +26,16 @@ const Header: React.FC<Props> = ({ hideButtons, onOpenCreateRoomModal }) => {
       >
         Near Chat
       </Heading>
+      <Text textAlign="center" color="white">
+        built using{" "}
+        <Link
+          href="https://github.com/wpdas/near-social-bridge"
+          target="_blank"
+          textDecoration="underline"
+        >
+          near-social-bridge
+        </Link>
+      </Text>
       {!hideButtons && (
         <Button
           h="1.75rem"
