@@ -1,6 +1,2 @@
 - Melhorar o algoritmo de re renderizar as mensagens.
 Acho que está pesado por estar renderizando toda hora a lista de msg. Checar isso!
-
-- Colocar Tamanho fixo no elemento de mensagens. Ele fica pequeno quando tem poucas mensagens
-
-- Fazer com que o scroll vá para a base toda vez que tiver uma nova msg

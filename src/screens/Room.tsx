@@ -1,4 +1,10 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import {
   Box,
   Button,
@@ -32,8 +38,15 @@ const Room: React.FC<RoomScreenProps> = ({ navigation, route }) => {
   const [message, setMessage] = useState("");
   const [pendingMessages, setPendingMessages] = useState<RoomMessage[]>([]);
   const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
-
+  const messageBoxRef = useRef<any>();
   const auth = useAuth();
+
+  const scrollMessageBoxToBottom = useCallback(() => {
+    if (messageBoxRef.current) {
+      const messageBox = messageBoxRef.current;
+      messageBox.scrollTo(0, messageBox.scrollHeight);
+    }
+  }, [messageBoxRef]);
 
   // Listem to messages
   useEffect(() => {
@@ -45,15 +58,16 @@ const Room: React.FC<RoomScreenProps> = ({ navigation, route }) => {
           // If there are new messages, clean up the pending messages
           if (roomData.messages?.length !== currentRoomMessages.length) {
             setPendingMessages([]);
+            scrollMessageBoxToBottom();
           }
         });
       }
-    }, 2500);
+    }, 5000);
 
     return () => {
       clearInterval(subscription);
     };
-  }, [roomId, currentRoomMessages.length]);
+  }, [roomId, currentRoomMessages.length, scrollMessageBoxToBottom]);
 
   const goToHome = () => {
     navigation.push("Home");
@@ -84,13 +98,27 @@ const Room: React.FC<RoomScreenProps> = ({ navigation, route }) => {
         userName: auth.user?.profileInfo?.name!,
         userAvatarImage: auth.user?.profileInfo?.image?.ipfs_cid!,
       });
-      // console.log("Enviou msg!");
 
       if (result?.error) {
         console.error(result.error);
+        setPendingMessages([]);
+        return;
       }
+
+      scrollMessageBoxToBottom();
     }
   };
+
+  // Scroll message box to the bottom as soon as the box is rendered
+  useEffect(() => {
+    if (messageBoxRef.current) {
+      scrollMessageBoxToBottom();
+    }
+  }, [messageBoxRef, scrollMessageBoxToBottom]);
+
+  useEffect(() => {
+    scrollMessageBoxToBottom();
+  }, [pendingMessages, scrollMessageBoxToBottom]);
 
   return (
     <Box
@@ -121,10 +149,11 @@ const Room: React.FC<RoomScreenProps> = ({ navigation, route }) => {
 
         {/* Messages */}
         <Box
+          ref={messageBoxRef}
           bg="teal.50"
           p={4}
           overflowX="scroll"
-          maxHeight={604}
+          height={604}
           background="url(https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png)"
           backgroundSize="cover"
         >
