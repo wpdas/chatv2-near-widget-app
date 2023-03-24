@@ -1,80 +1,115 @@
-import { useEffect, useState } from "react";
-import { useNavigation } from "near-social-bridge/navigation";
+import { useState } from "react";
 import {
+  Alert,
+  AlertIcon,
   Box,
   Button,
-  Heading,
-  IconButton,
   Input,
   InputGroup,
   InputLeftAddon,
   InputRightAddon,
-  InputRightElement,
+  Spinner,
   Stack,
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
-import { NavigationProps, PreHomeScreenProps } from "../routes/NavigationProps";
-import getUserInfo, { GetUserResponse } from "../services/getUserInfo";
+import { PreHomeScreenProps } from "../routes/NavigationProps";
 import Container from "../components/Container";
 import Content from "../components/Content";
 import NewRoomModal from "../components/NewRoomModal";
 import Header from "../components/Header";
+import getRoomData from "../services/getRoomData";
 
-const Home: React.FC<PreHomeScreenProps> = () => {
+const Home: React.FC<PreHomeScreenProps> = ({ navigation }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [userInfo, setUserInfo] = useState<GetUserResponse>();
+  const [isReady, setIsReady] = useState(true);
+  const [showError, setShowError] = useState(false);
   const [roomId, setRoomId] = useState("");
 
-  // You can also get this from this screen props
-  const navigation = useNavigation<NavigationProps>();
+  const joinClickHandler = () => {
+    setIsReady(false);
+    getRoomData({ roomId })
+      .then((roomData) => {
+        setIsReady(true);
 
-  useEffect(() => {
-    // Get user info - service
-    // getUserInfo().then((response) => {
-    //   setUserInfo(response);
-    // });
-  }, []);
+        // Show error alert
+        if (roomData.error) {
+          setShowError(true);
+          setTimeout(() => {
+            setShowError(false);
+          }, 3000);
+          return;
+        }
 
-  const goToProfileHandler = () => {
-    // Go to Profile page passing some props
-    navigation.push("Room", {
-      userName: userInfo?.profileInfo?.name || "Not logged in",
-      ipfsCidAvatar: userInfo?.profileInfo?.image.ipfs_cid || undefined,
-    });
+        // Success: Go to Room page
+        navigation.push("Room", {
+          roomId,
+          roomMessages: roomData.messages!,
+        });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   };
 
   return (
     <Container>
       <Header onOpenCreateRoomModal={onOpen} />
+      {showError && (
+        <Alert status="error">
+          <AlertIcon />
+          Room not found!
+        </Alert>
+      )}
       <Content>
-        <Text size="xs" mt={16} color="gray.700" maxW="sm" textAlign="center">
-          Join or create a room to chat with your friends
-        </Text>
+        {isReady ? (
+          <>
+            <Text
+              size="xs"
+              mt={16}
+              color="gray.700"
+              maxW="sm"
+              textAlign="center"
+            >
+              Join or create a room to chat with your friends
+            </Text>
 
-        <Stack spacing={4} mt={4} width="sm">
-          <InputGroup>
-            <InputLeftAddon children="Room:" />
-            <Input
-              placeholder="type the room id you want to join"
-              maxW="md"
-              onChange={(e) => setRoomId(e.target.value)}
+            <Stack spacing={4} mt={4} width="sm">
+              <InputGroup>
+                <InputLeftAddon children="Room:" />
+                <Input
+                  placeholder="type the room id you want to join"
+                  maxW="md"
+                  onChange={(e) => setRoomId(e.target.value)}
+                />
+                {roomId && (
+                  <InputRightAddon width="4.5rem">
+                    <Button h="1.75rem" size="sm" onClick={joinClickHandler}>
+                      Join
+                    </Button>
+                  </InputRightAddon>
+                )}
+              </InputGroup>
+            </Stack>
+          </>
+        ) : (
+          <Box mt={250}>
+            <Spinner
+              thickness="4px"
+              speed="0.65s"
+              emptyColor="gray.200"
+              color="teal.500"
+              size="xl"
             />
-            {roomId && (
-              <InputRightAddon width="4.5rem">
-                <Button
-                  h="1.75rem"
-                  size="sm"
-                  onClick={() => navigation.push("Room", {})}
-                >
-                  Join
-                </Button>
-              </InputRightAddon>
-            )}
-          </InputGroup>
-        </Stack>
+          </Box>
+        )}
       </Content>
-      <NewRoomModal isOpen={isOpen} onClose={onClose} />
+      <NewRoomModal
+        isOpen={isOpen}
+        onClose={onClose}
+        onCreateClick={() => setIsReady(false)}
+        onComplete={() => setIsReady(true)}
+      />
     </Container>
   );
 };

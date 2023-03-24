@@ -1,6 +1,6 @@
 import request from "near-social-bridge/request";
 
-export interface RoomMessages {
+export interface RoomMessage {
   accountId: string;
   blockHeight: number;
   value: {
@@ -12,17 +12,14 @@ export interface RoomMessages {
 
 export interface GetRoomDataResponse {
   error?: string;
-  messages?: RoomMessages[];
+  messages?: RoomMessage[];
 }
 
 interface GetRoomDataPayload {
-  wait?: number;
   roomId: string;
 }
 
 // Send a request to Near Social View to get basic user info
-const getUserInfo = (payload: GetRoomDataPayload) =>
+const getRoomData = (payload: GetRoomDataPayload) =>
   request<GetRoomDataResponse>("get-room-data", payload);
-export default getUserInfo;
-
-// TODO: Create auth thing (protected routes)
+export default getRoomData;

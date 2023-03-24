@@ -12,9 +12,12 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import useTypedNavigation from "../hooks/useTypedNavigator";
+import getRoomData from "../services/getRoomData";
 
 type Props = {
   isOpen: boolean;
+  onCreateClick?: () => void;
+  onComplete?: () => void;
   onClose: () => void;
 };
 
@@ -24,14 +27,33 @@ const filterText = (text: string) =>
     .replace(/\s/g, "-")
     .toLowerCase();
 
-const NewRoomModal: React.FC<Props> = ({ isOpen, onClose }) => {
+const NewRoomModal: React.FC<Props> = ({
+  isOpen,
+  onClose,
+  onCreateClick,
+  onComplete,
+}) => {
   const [roomId, setRoomId] = useState("");
   const navigation = useTypedNavigation();
 
   const onCreateHandler = () => {
-    navigation.push("CreateRoom", {
-      roomId,
+    if (onCreateClick) {
+      onCreateClick();
+    }
+
+    getRoomData({ roomId }).then((roomData) => {
+      if (onComplete) {
+        onComplete();
+      }
+
+      // Success: Go to Room page
+      navigation.push("Room", {
+        roomId,
+        roomMessages: roomData.messages || [],
+      });
     });
+
+    onClose();
   };
 
   return (
