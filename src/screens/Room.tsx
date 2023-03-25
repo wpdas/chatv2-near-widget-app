@@ -48,7 +48,7 @@ const Room: React.FC<RoomScreenProps> = ({ navigation, route }) => {
     }
   }, [messageBoxRef]);
 
-  // Listem to messages
+  // Listen to messages
   useEffect(() => {
     const subscription = setInterval(() => {
       if (roomId) {
@@ -78,7 +78,6 @@ const Room: React.FC<RoomScreenProps> = ({ navigation, route }) => {
       const messageCopy = message;
 
       // Populate the pending messages to display in advance
-      // TODO: quando atualizar as msgs, remover o pending msgs
       setPendingMessages([
         {
           accountId: auth.user?.accountId!,

@@ -19,6 +19,7 @@ type Props = {
   onCreateClick?: () => void;
   onComplete?: () => void;
   onClose: () => void;
+  onError: (errorMsg: string) => void;
 };
 
 const filterText = (text: string) =>
@@ -32,6 +33,7 @@ const NewRoomModal: React.FC<Props> = ({
   onClose,
   onCreateClick,
   onComplete,
+  onError,
 }) => {
   const [roomId, setRoomId] = useState("");
   const navigation = useTypedNavigation();
@@ -44,6 +46,15 @@ const NewRoomModal: React.FC<Props> = ({
     getRoomData({ roomId }).then((roomData) => {
       if (onComplete) {
         onComplete();
+      }
+
+      // Check if room already exists.
+      if (roomData.messages && roomData.messages.length > 0) {
+        if (onError) {
+          onError("This room already exists.");
+        }
+        onClose();
+        return;
       }
 
       // Success: Go to Room page

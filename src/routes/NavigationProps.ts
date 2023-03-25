@@ -4,9 +4,6 @@ import { RoomMessage } from "../services/getRoomData";
 // Navigation props
 export type NavigationProps = {
   Home: undefined;
-  CreateRoom: {
-    roomId: string;
-  };
   Room: {
     roomId: string;
     roomMessages: RoomMessage[];
@@ -18,11 +15,6 @@ export type NavigationProps = {
 export type PreHomeScreenProps = IFrameStackScreenProps<
   NavigationProps,
   "Home"
->;
-
-export type CreateRoomScreenProps = IFrameStackScreenProps<
-  NavigationProps,
-  "CreateRoom"
 >;
 
 export type RoomScreenProps = IFrameStackScreenProps<NavigationProps, "Room">;

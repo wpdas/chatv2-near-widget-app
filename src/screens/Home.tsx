@@ -23,7 +23,7 @@ import getRoomData from "../services/getRoomData";
 const Home: React.FC<PreHomeScreenProps> = ({ navigation }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [isReady, setIsReady] = useState(true);
-  const [showError, setShowError] = useState(false);
+  const [error, setError] = useState("");
   const [roomId, setRoomId] = useState("");
 
   const joinClickHandler = () => {
@@ -34,9 +34,9 @@ const Home: React.FC<PreHomeScreenProps> = ({ navigation }) => {
 
         // Show error alert
         if (roomData.error) {
-          setShowError(true);
+          setError("Room not found!");
           setTimeout(() => {
-            setShowError(false);
+            setError("");
           }, 3000);
           return;
         }
@@ -52,13 +52,20 @@ const Home: React.FC<PreHomeScreenProps> = ({ navigation }) => {
       });
   };
 
+  const onErrorCreatingNewRoom = (error: string) => {
+    setError(error);
+    setTimeout(() => {
+      setError("");
+    }, 4000);
+  };
+
   return (
     <Container>
       <Header onOpenCreateRoomModal={onOpen} />
-      {showError && (
+      {error && (
         <Alert status="error">
           <AlertIcon />
-          Room not found!
+          {error}
         </Alert>
       )}
       <Content>
@@ -109,6 +116,7 @@ const Home: React.FC<PreHomeScreenProps> = ({ navigation }) => {
         onClose={onClose}
         onCreateClick={() => setIsReady(false)}
         onComplete={() => setIsReady(true)}
+        onError={onErrorCreatingNewRoom}
       />
     </Container>
   );

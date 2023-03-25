@@ -3,7 +3,6 @@ import { useAuth } from "near-social-bridge/auth";
 import { NavigationProps } from "./NavigationProps";
 
 import Home from "../screens/Home";
-import CreateRoom from "../screens/CreateRoom";
 import Room from "../screens/Room";
 import LoggedOut from "../screens/LoggedOut";
 
@@ -22,11 +21,6 @@ const Routes: React.FC = () => {
         {auth.user && auth.ready ? (
           <>
             <Screen name="Home" component={Home} iframeHeight={500} />
-            <Screen
-              name="CreateRoom"
-              component={CreateRoom}
-              iframeHeight={500}
-            />
             <Screen name="Room" component={Room} iframeHeight={740} />
           </>
         ) : (
