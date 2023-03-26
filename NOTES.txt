@@ -1,8 +1,9 @@
-- Melhorar o algoritmo de re renderizar as mensagens.
-Acho que está pesado por estar renderizando toda hora a lista de msg. Checar isso!
-
 - Colocar link/botao com "near-social-community", quando o usuario clicar nele, preenche o input
 de room automaticamente. Falar que essa é uma das primeiras salas, ou a primeira rs.
 
 - Utilizar os recursos: getRoomList, registerNewRoom e mostrar na Home as salas recentemente criadas.
 - Mostrar ultimas 10 salas criadas? Mostrar as top 5 salas com mais mensagens?
+
+- Criar script que mapeia salas criadas antes e salva as salas na lista de salas
+
+- Capacidade de enviar fotos/arquivos usando IPFS

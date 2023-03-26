@@ -11,22 +11,17 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { useState } from "react";
-import useTypedNavigation from "../hooks/useTypedNavigator";
 import getRoomData from "../services/getRoomData";
+import registerNewRoom from "../services/registerNewRoom";
+import roomNameFormater from "../utils/roomNameFormater";
 
 type Props = {
   isOpen: boolean;
   onCreateClick?: () => void;
-  onComplete?: () => void;
+  onComplete?: (roomId: string) => void;
   onClose: () => void;
   onError: (errorMsg: string) => void;
 };
-
-const filterText = (text: string) =>
-  text
-    .replace(/[^a-zA-Z0-9 ]/g, "")
-    .replace(/\s/g, "-")
-    .toLowerCase();
 
 const NewRoomModal: React.FC<Props> = ({
   isOpen,
@@ -36,18 +31,13 @@ const NewRoomModal: React.FC<Props> = ({
   onError,
 }) => {
   const [roomId, setRoomId] = useState("");
-  const navigation = useTypedNavigation();
 
   const onCreateHandler = () => {
     if (onCreateClick) {
       onCreateClick();
     }
 
-    getRoomData({ roomId }).then((roomData) => {
-      if (onComplete) {
-        onComplete();
-      }
-
+    getRoomData({ roomId }).then(async (roomData) => {
       // Check if room already exists.
       if (roomData.messages && roomData.messages.length > 0) {
         if (onError) {
@@ -57,11 +47,12 @@ const NewRoomModal: React.FC<Props> = ({
         return;
       }
 
-      // Success: Go to Room page
-      navigation.push("Room", {
-        roomId,
-        roomMessages: roomData.messages || [],
-      });
+      await registerNewRoom({ roomId });
+
+      // Success: Pass back the new roomId
+      if (onComplete) {
+        onComplete(roomId);
+      }
     });
 
     onClose();
@@ -82,7 +73,7 @@ const NewRoomModal: React.FC<Props> = ({
             mb={2}
             placeholder="Room id"
             maxW="md"
-            onChange={(e) => setRoomId(filterText(e.target.value))}
+            onChange={(e) => setRoomId(roomNameFormater(e.target.value))}
           />
           {roomId && (
             <Text as="b" fontSize="xs" color="gray.700">
