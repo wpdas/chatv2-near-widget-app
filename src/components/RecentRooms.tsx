@@ -12,6 +12,7 @@ import {
   SkeletonText,
   Stack,
   Text,
+  useMediaQuery,
 } from "@chakra-ui/react";
 import Fuse from "fuse.js";
 
@@ -26,6 +27,7 @@ type Props = {
 const RecentRooms: React.FC<Props> = ({ onSelectRoom, onClickCreateRoom }) => {
   const { roomsList } = useRoomsList();
   const [searchText, setSearchText] = useState("");
+  const [isLargerThan700] = useMediaQuery("(min-width: 700px)");
   const [filteredRoomsList, setFilteredRoomsList] = useState<string[]>([]);
 
   useEffect(() => {
@@ -37,7 +39,12 @@ const RecentRooms: React.FC<Props> = ({ onSelectRoom, onClickCreateRoom }) => {
   }, [roomsList, searchText]);
 
   return (
-    <Stack bg="teal.500" width="40%" alignItems="center" height={734}>
+    <Stack
+      bg="teal.500"
+      width={isLargerThan700 ? "500px" : "100%"}
+      alignItems="center"
+      height={734}
+    >
       <Stack alignItems="center" width="100%" height="100%">
         <Box
           p={4}

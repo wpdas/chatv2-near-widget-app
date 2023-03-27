@@ -7372,10 +7372,10 @@ natural-compare@^1.4.0:
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
   integrity sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==
 
-near-social-bridge@^1.0.0-beta8:
-  version "1.0.0-beta8"
-  resolved "https://registry.yarnpkg.com/near-social-bridge/-/near-social-bridge-1.0.0-beta8.tgz#f4155a9f93672e8827e0dcf3bf3970d1b7c09eb2"
-  integrity sha512-vCf0IO/DunArxFNXOpPJ4ZckQ5nlaHyw6IuVxYx0jeEHPtst/gpB7SZ1Wv1Vn83K+eofe4eDTGKtvSTLIf3Bhw==
+near-social-bridge@^1.0.0-beta9:
+  version "1.0.0-beta9"
+  resolved "https://registry.yarnpkg.com/near-social-bridge/-/near-social-bridge-1.0.0-beta9.tgz#83df1906b50ffaff9b4f58f631724c4a876686d2"
+  integrity sha512-LPoGRElSfAIL8PEfo9vTnmwPYKJetltD4/5UyaYjmVNtO5Gd52iLrJJpNqA7qx7xQezrjNtOZPhAk4PqynrC7g==
 
 negotiator@0.6.3:
   version "0.6.3"

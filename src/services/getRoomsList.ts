@@ -5,6 +5,12 @@ interface GetRoomsListResponse {
 }
 
 const getRoomsList = () => {
-  return request<GetRoomsListResponse>("get-rooms-list");
+  return request<GetRoomsListResponse>(
+    "get-rooms-list",
+    {},
+    {
+      forceTryAgain: true,
+    }
+  );
 };
 export default getRoomsList;

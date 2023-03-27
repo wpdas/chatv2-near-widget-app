@@ -5,6 +5,7 @@ import {
   Box,
   Spinner,
   useDisclosure,
+  useMediaQuery,
 } from "@chakra-ui/react";
 import { PreHomeScreenProps } from "../routes/NavigationProps";
 import Container from "../components/Container";
@@ -15,6 +16,7 @@ import ChatRoom from "../components/ChatRoom";
 import useRoomsList from "../hooks/useRoomsList";
 
 const Home: React.FC<PreHomeScreenProps> = ({ navigation }) => {
+  const [isLargerThan700] = useMediaQuery("(min-width: 700px)");
   const [roomId, setRoomId] = useState("near-social-community");
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [isReady, setIsReady] = useState(true);
@@ -28,9 +30,17 @@ const Home: React.FC<PreHomeScreenProps> = ({ navigation }) => {
     }, 4000);
   };
 
-  const onSelectRoomHandler = useCallback((selectedRoomId: string) => {
-    setRoomId(selectedRoomId);
-  }, []);
+  const onSelectRoomHandler = useCallback(
+    (selectedRoomId: string) => {
+      setRoomId(selectedRoomId);
+
+      // Go to Mobile Chat Room
+      if (!isLargerThan700) {
+        navigation.push("MobileChatRoom", { roomId: selectedRoomId });
+      }
+    },
+    [isLargerThan700, navigation]
+  );
 
   const onCompleteCreateRoom = useCallback(
     (roomId: string) => {
@@ -55,19 +65,23 @@ const Home: React.FC<PreHomeScreenProps> = ({ navigation }) => {
           onSelectRoom={onSelectRoomHandler}
           onClickCreateRoom={onOpen}
         />
-        {isReady ? (
-          <ChatRoom roomId={roomId} />
-        ) : (
-          <Box w="100%" display="flex">
-            <Spinner
-              margin="auto"
-              thickness="4px"
-              speed="0.65s"
-              emptyColor="gray.200"
-              color="teal.500"
-              size="xl"
-            />
-          </Box>
+        {isLargerThan700 && (
+          <>
+            {isReady ? (
+              <ChatRoom roomId={roomId} />
+            ) : (
+              <Box w="100%" display="flex">
+                <Spinner
+                  margin="auto"
+                  thickness="4px"
+                  speed="0.65s"
+                  emptyColor="gray.200"
+                  color="teal.500"
+                  size="xl"
+                />
+              </Box>
+            )}
+          </>
         )}
       </Content>
       <NewRoomModal

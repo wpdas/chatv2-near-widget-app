@@ -176,7 +176,13 @@ const ChatRoom: React.FC<Props> = ({ roomId }) => {
             </Box>
 
             {/* Input */}
-            <Box display="flex" alignItems="center" p={4} bg="#eaeaea">
+            <Box
+              display="flex"
+              alignItems="center"
+              p={4}
+              bg="#eaeaea"
+              justifyContent="space-between"
+            >
               <Input
                 _hover={{ borderColor: "#eaeaea" }}
                 _focus={{ borderColor: "#eaeaea" }}
@@ -186,6 +192,7 @@ const ChatRoom: React.FC<Props> = ({ roomId }) => {
                 bg="#eaeaea"
                 placeholder="Type your message here..."
                 fontSize="sm"
+                w="80%"
                 fontWeight="600"
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}

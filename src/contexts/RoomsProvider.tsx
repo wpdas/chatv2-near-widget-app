@@ -21,9 +21,21 @@ const RoomsProvider: React.FC<{ children: React.ReactNode }> = ({
   const [roomsList, setRoomsList] = useState<string[]>([]);
 
   const reFetch = useCallback(() => {
-    getRoomsList().then((response) => {
-      setRoomsList(response.roomsList);
-    });
+    getRoomsList()
+      .then((response) => {
+        setRoomsList(response.roomsList);
+      })
+      .catch(() => {
+        // If error: set default rooms
+        console.warn("Error getting rooms list. Using default rooms now!");
+        setRoomsList([
+          "near-social-community",
+          "bos",
+          "satori",
+          "dragon-ball-z",
+          "sala-teste-1",
+        ]);
+      });
   }, []);
 
   useEffect(() => {

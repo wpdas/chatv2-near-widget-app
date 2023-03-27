@@ -1,12 +1,10 @@
 import { IFrameStackScreenProps } from "near-social-bridge/navigation";
-import { RoomMessage } from "../services/getRoomData";
 
 // Navigation props
 export type NavigationProps = {
   Home: undefined;
-  Room: {
+  MobileChatRoom: {
     roomId: string;
-    roomMessages: RoomMessage[];
   };
   LoggedOut: undefined;
 };
@@ -17,7 +15,10 @@ export type PreHomeScreenProps = IFrameStackScreenProps<
   "Home"
 >;
 
-export type RoomScreenProps = IFrameStackScreenProps<NavigationProps, "Room">;
+export type MobileChatRoomScreenProps = IFrameStackScreenProps<
+  NavigationProps,
+  "MobileChatRoom"
+>;
 
 export type LoggedOutScreenProps = IFrameStackScreenProps<
   NavigationProps,
