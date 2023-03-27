@@ -18,18 +18,18 @@ const Routes: React.FC = () => {
   return (
     <>
       <Navigator>
-        {/* {auth.user && auth.ready ? ( */}
-        <>
-          <Screen name="Home" component={Home} iframeHeight={740} />
-          <Screen
-            name="MobileChatRoom"
-            component={MobileChatRoom}
-            iframeHeight={740}
-          />
-        </>
-        {/* ) : (
+        {auth.user && auth.ready ? (
+          <>
+            <Screen name="Home" component={Home} iframeHeight={740} />
+            <Screen
+              name="MobileChatRoom"
+              component={MobileChatRoom}
+              iframeHeight={740}
+            />
+          </>
+        ) : (
           <Screen name="LoggedOut" component={LoggedOut} iframeHeight={600} />
-        )} */}
+        )}
       </Navigator>
     </>
   );
