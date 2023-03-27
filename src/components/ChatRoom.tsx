@@ -5,13 +5,13 @@ import React, {
   useRef,
   useState,
 } from "react";
+import { useAuth } from "near-social-bridge/auth";
 import { Box, Heading, IconButton, Input, Icon, Text } from "@chakra-ui/react";
 import truncate from "../utils/truncate";
 import Message from "../components/Message";
 import Loading from "../components/Loading";
 import sendMessage from "../services/sendMessage";
 import getRoomData, { RoomMessage } from "../services/getRoomData";
-import { useAuth } from "near-social-bridge/auth";
 import { RiSendPlaneLine } from "react-icons/ri";
 
 type Props = {
@@ -46,6 +46,10 @@ const ChatRoom: React.FC<Props> = ({ roomId }) => {
       setReady(true);
     });
   }, [roomId, scrollMessageBoxToBottom]);
+
+  useEffect(() => {
+    setReady(false);
+  }, [roomId]);
 
   // Listen to messages
   useEffect(() => {

@@ -8,6 +8,8 @@ import {
   InputGroup,
   InputLeftAddon,
   Link,
+  SkeletonCircle,
+  SkeletonText,
   Stack,
   Text,
 } from "@chakra-ui/react";
@@ -80,29 +82,45 @@ const RecentRooms: React.FC<Props> = ({ onSelectRoom, onClickCreateRoom }) => {
             />
           </InputGroup>
         </Stack>
-        <Stack w="100%" pl={4} pr={4} overflow="scroll" height={400} pt={4}>
-          {searchText ? (
-            <>
-              {filteredRoomsList.map((roomName) => (
-                <RoomItem
-                  key={roomName}
-                  name={roomName}
-                  onSelectRoom={onSelectRoom}
-                />
-              ))}
-            </>
-          ) : (
-            <>
-              {roomsList.map((roomName) => (
-                <RoomItem
-                  key={roomName}
-                  name={roomName}
-                  onSelectRoom={onSelectRoom}
-                />
-              ))}
-            </>
-          )}
-        </Stack>
+        {roomsList.length > 0 ? (
+          <Stack w="100%" pl={4} pr={4} overflow="scroll" height={400} pt={4}>
+            {searchText ? (
+              <>
+                {filteredRoomsList.map((roomName) => (
+                  <RoomItem
+                    key={roomName}
+                    name={roomName}
+                    onSelectRoom={onSelectRoom}
+                  />
+                ))}
+              </>
+            ) : (
+              <>
+                {roomsList.map((roomName) => (
+                  <RoomItem
+                    key={roomName}
+                    name={roomName}
+                    onSelectRoom={onSelectRoom}
+                  />
+                ))}
+              </>
+            )}
+          </Stack>
+        ) : (
+          // Skeleton
+          <Box p={2} w="86%" display="flex" alignItems="center">
+            <SkeletonCircle size="8" speed={0.4} mt={4} />
+            <SkeletonText
+              w="80%"
+              ml={4}
+              mt="4"
+              noOfLines={2}
+              speed={0.4}
+              spacing="2"
+              skeletonHeight="3"
+            />
+          </Box>
+        )}
       </Stack>
 
       {/* About the library */}
