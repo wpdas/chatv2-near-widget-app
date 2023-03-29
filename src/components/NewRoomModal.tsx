@@ -11,6 +11,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { useState } from "react";
+import useRoomsList from "../hooks/useRoomsList";
 import getRoomData from "../services/getRoomData";
 import registerNewRoom from "../services/registerNewRoom";
 import roomNameFormater from "../utils/roomNameFormater";
@@ -31,6 +32,7 @@ const NewRoomModal: React.FC<Props> = ({
   onError,
 }) => {
   const [roomId, setRoomId] = useState("");
+  const { updateRoomsList } = useRoomsList();
 
   const onCreateHandler = () => {
     if (onCreateClick) {
@@ -47,11 +49,21 @@ const NewRoomModal: React.FC<Props> = ({
         return;
       }
 
-      await registerNewRoom({ roomId });
+      const registerResult = await registerNewRoom({ roomId });
 
-      // Success: Pass back the new roomId
-      if (onComplete) {
-        onComplete(roomId);
+      if (registerResult.error) {
+        // Error: Don't pass back the new roomId
+        if (onError) {
+          onError(registerResult.error);
+        }
+      } else {
+        // Update rooms list
+        updateRoomsList(registerResult.roomsList);
+
+        // Success: Pass back the new roomId
+        if (onComplete) {
+          onComplete(roomId);
+        }
       }
     });
 

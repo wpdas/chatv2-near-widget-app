@@ -3,13 +3,13 @@ import getRoomsList from "../services/getRoomsList";
 
 type RoomsContextProps = {
   roomsList: string[];
-  reFetch: () => void;
+  updateRoomsList: (updatedRoomsList: string[]) => void;
 };
 
 const defaultValue: RoomsContextProps = {
   roomsList: [],
-  reFetch: () => {
-    throw new Error("reFetch must be defined");
+  updateRoomsList: () => {
+    throw new Error("updateRoomsList must be defined");
   },
 };
 
@@ -20,30 +20,47 @@ const RoomsProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   const [roomsList, setRoomsList] = useState<string[]>([]);
 
-  const reFetch = useCallback(() => {
+  const fetch = useCallback(() => {
     getRoomsList()
       .then((response) => {
+        console.log("Chamou re fetch:", response);
         setRoomsList(response.roomsList);
+        if (response.error) {
+          console.error(response.error);
+          // Use default rooms
+          // setRoomsList([
+          //   "near-social-community",
+          //   "bos",
+          //   "satori",
+          //   "dragon-ball-z",
+          //   "sala-teste-1",
+          // ]);
+        }
       })
       .catch(() => {
         // If error: set default rooms
         console.warn("Error getting rooms list. Using default rooms now!");
-        setRoomsList([
-          "near-social-community",
-          "bos",
-          "satori",
-          "dragon-ball-z",
-          "sala-teste-1",
-        ]);
+        // Use default rooms
+        // setRoomsList([
+        //   "near-social-community",
+        //   "bos",
+        //   "satori",
+        //   "dragon-ball-z",
+        //   "sala-teste-1",
+        // ]);
       });
   }, []);
 
+  const updateRoomsList = useCallback((updatedRoomsList: string[]) => {
+    setRoomsList(updatedRoomsList);
+  }, []);
+
   useEffect(() => {
-    reFetch();
-  }, [reFetch]);
+    fetch();
+  }, [fetch]);
 
   return (
-    <RoomsContext.Provider value={{ roomsList, reFetch }}>
+    <RoomsContext.Provider value={{ roomsList, updateRoomsList }}>
       {children}
     </RoomsContext.Provider>
   );

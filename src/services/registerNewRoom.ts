@@ -2,6 +2,7 @@ import { request } from "near-social-bridge/request";
 
 interface RegisterNewRoomResponse {
   roomsList: string[];
+  error?: string;
 }
 
 export interface RegisterNewRoomPayload {

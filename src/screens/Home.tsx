@@ -13,7 +13,6 @@ import Content from "../components/Content";
 import NewRoomModal from "../components/NewRoomModal";
 import RecentRooms from "../components/RecentRooms";
 import ChatRoom from "../components/ChatRoom";
-import useRoomsList from "../hooks/useRoomsList";
 
 const Home: React.FC<PreHomeScreenProps> = ({ navigation }) => {
   const [isLargerThan700] = useMediaQuery("(min-width: 700px)");
@@ -21,10 +20,10 @@ const Home: React.FC<PreHomeScreenProps> = ({ navigation }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [isReady, setIsReady] = useState(true);
   const [error, setError] = useState("");
-  const { reFetch } = useRoomsList();
 
   const onErrorCreatingNewRoom = (error: string) => {
     setError(error);
+    setIsReady(true);
     setTimeout(() => {
       setError("");
     }, 4000);
@@ -42,15 +41,10 @@ const Home: React.FC<PreHomeScreenProps> = ({ navigation }) => {
     [isLargerThan700, navigation]
   );
 
-  const onCompleteCreateRoom = useCallback(
-    (roomId: string) => {
-      // Update rooms list
-      reFetch();
-      setIsReady(true);
-      setRoomId(roomId);
-    },
-    [reFetch]
-  );
+  const onCompleteCreateRoom = useCallback((roomId: string) => {
+    setIsReady(true);
+    setRoomId(roomId);
+  }, []);
 
   return (
     <Container>

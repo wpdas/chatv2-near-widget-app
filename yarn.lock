@@ -7384,10 +7384,10 @@ natural-compare@^1.4.0:
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
   integrity sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==
 
-near-social-bridge@^1.0.0-rc1:
-  version "1.0.0-rc1"
-  resolved "https://registry.yarnpkg.com/near-social-bridge/-/near-social-bridge-1.0.0-rc1.tgz#f5dbef514f0f37bec16836a40208c9c54dacd475"
-  integrity sha512-SRvSiq3nmX3cSDJoe8NFP2tWBJ6TrhUvAOh4B4IsEUdNHkEVovyTGm+VFayb2vG4zhluwt2qRyn9sX1hMdGcVQ==
+near-social-bridge@^1.0.0-rc2:
+  version "1.0.0-rc2"
+  resolved "https://registry.yarnpkg.com/near-social-bridge/-/near-social-bridge-1.0.0-rc2.tgz#2bdcbdc3e2052e764d282224748d4c55ded20503"
+  integrity sha512-zjxt8EK7hXI0rAa7iYu1NDfnDMAUlQb21RdztJoHU3PvbubC4L7aEupRsWgJ1TJNBCWQ2CKGHpNJOg7b3qMPww==
   dependencies:
     "@faker-js/faker" "^7.6.0"
 
