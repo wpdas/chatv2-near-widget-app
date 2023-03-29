@@ -24,30 +24,12 @@ const RoomsProvider: React.FC<{ children: React.ReactNode }> = ({
     getRoomsList()
       .then((response) => {
         console.log("Chamou re fetch:", response);
-        setRoomsList(response.roomsList);
         if (response.error) {
           console.error(response.error);
-          // Use default rooms
-          // setRoomsList([
-          //   "near-social-community",
-          //   "bos",
-          //   "satori",
-          //   "dragon-ball-z",
-          //   "sala-teste-1",
-          // ]);
         }
       })
       .catch(() => {
-        // If error: set default rooms
         console.warn("Error getting rooms list. Using default rooms now!");
-        // Use default rooms
-        // setRoomsList([
-        //   "near-social-community",
-        //   "bos",
-        //   "satori",
-        //   "dragon-ball-z",
-        //   "sala-teste-1",
-        // ]);
       });
   }, []);
 
