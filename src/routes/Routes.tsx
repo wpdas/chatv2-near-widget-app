@@ -15,9 +15,11 @@ const { Navigator, Screen } = createStackNavigator<NavigationProps>(
 const Routes: React.FC = () => {
   const auth = useAuth();
 
+  if (!auth.ready) return <Loading />;
+
   return (
     <>
-      {auth.user && auth.ready ? (
+      {auth.user ? (
         <Navigator>
           <Screen name="Home" component={Home} iframeHeight={740} />
           <Screen
