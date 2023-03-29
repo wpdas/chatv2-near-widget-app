@@ -17,20 +17,20 @@ const Routes: React.FC = () => {
 
   return (
     <>
-      <Navigator>
-        {auth.user && auth.ready ? (
-          <>
-            <Screen name="Home" component={Home} iframeHeight={740} />
-            <Screen
-              name="MobileChatRoom"
-              component={MobileChatRoom}
-              iframeHeight={740}
-            />
-          </>
-        ) : (
-          <Screen name="LoggedOut" component={LoggedOut} iframeHeight={600} />
-        )}
-      </Navigator>
+      {auth.user && auth.ready ? (
+        <Navigator>
+          <Screen name="Home" component={Home} iframeHeight={740} />
+          <Screen
+            name="MobileChatRoom"
+            component={MobileChatRoom}
+            iframeHeight={740}
+          />
+        </Navigator>
+      ) : (
+        <Navigator>
+          <Screen name="LoggedOut" component={LoggedOut} iframeHeight={740} />
+        </Navigator>
+      )}
     </>
   );
 };

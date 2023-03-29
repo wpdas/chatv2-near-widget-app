@@ -6,19 +6,29 @@ import React, {
   useState,
 } from "react";
 import { useAuth } from "near-social-bridge/auth";
-import { Box, Heading, IconButton, Input, Icon, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Heading,
+  IconButton,
+  Input,
+  Icon,
+  Text,
+  Button,
+} from "@chakra-ui/react";
+import { RiSendPlaneLine } from "react-icons/ri";
 import truncate from "../utils/truncate";
 import Message from "../components/Message";
 import Loading from "../components/Loading";
 import sendMessage from "../services/sendMessage";
 import getRoomData, { RoomMessage } from "../services/getRoomData";
-import { RiSendPlaneLine } from "react-icons/ri";
+import useTypedNavigation from "../hooks/useTypedNavigator";
 
 type Props = {
   roomId: string;
+  showLeaveButton?: boolean;
 };
 
-const ChatRoom: React.FC<Props> = ({ roomId }) => {
+const ChatRoom: React.FC<Props> = ({ roomId, showLeaveButton }) => {
   const [currentRoomMessages, setCurrentRoomMessages] = useState<RoomMessage[]>(
     []
   );
@@ -27,6 +37,7 @@ const ChatRoom: React.FC<Props> = ({ roomId }) => {
   const [ready, setReady] = useState(false);
   const messageBoxRef = useRef<any>();
   const auth = useAuth();
+  const navigation = useTypedNavigation();
 
   // Auto scrolling
   const scrollMessageBoxToBottom = useCallback(() => {
@@ -71,7 +82,7 @@ const ChatRoom: React.FC<Props> = ({ roomId }) => {
     return () => {
       clearInterval(subscription);
     };
-  }, [roomId, currentRoomMessages.length, scrollMessageBoxToBottom]);
+  }, [roomId, currentRoomMessages, scrollMessageBoxToBottom]);
 
   // Send message handler
   const sendMessageClick = async () => {
@@ -80,9 +91,10 @@ const ChatRoom: React.FC<Props> = ({ roomId }) => {
 
       // Populate the pending messages to display in advance
       setPendingMessages([
+        ...pendingMessages,
         {
           accountId: auth.user?.accountId!,
-          blockHeight: 0,
+          blockHeight: Math.random() * 999999,
           value: {
             text: messageCopy,
             userName: auth.user?.profileInfo?.name!,
@@ -129,6 +141,10 @@ const ChatRoom: React.FC<Props> = ({ roomId }) => {
     scrollMessageBoxToBottom();
   }, [pendingMessages, scrollMessageBoxToBottom]);
 
+  const goToHome = () => {
+    navigation.push("Home");
+  };
+
   return (
     <Box w="100%" display="flex" flexDirection="column" alignItems="center">
       <Box w="100%">
@@ -143,6 +159,11 @@ const ChatRoom: React.FC<Props> = ({ roomId }) => {
           alignItems="center"
         >
           Room: {roomName}
+          {showLeaveButton && (
+            <Button size="sm" colorScheme="teal" onClick={goToHome}>
+              Leave
+            </Button>
+          )}
         </Heading>
         {ready ? (
           <>

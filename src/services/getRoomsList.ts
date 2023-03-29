@@ -1,4 +1,4 @@
-import request from "near-social-bridge/request";
+import { request } from "near-social-bridge/request";
 
 interface GetRoomsListResponse {
   roomsList: string[];

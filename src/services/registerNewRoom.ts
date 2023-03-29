@@ -1,10 +1,10 @@
-import request from "near-social-bridge/request";
+import { request } from "near-social-bridge/request";
 
 interface RegisterNewRoomResponse {
   roomsList: string[];
 }
 
-interface RegisterNewRoomPayload {
+export interface RegisterNewRoomPayload {
   roomId: string;
 }
 

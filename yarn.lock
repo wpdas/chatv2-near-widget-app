@@ -2127,6 +2127,11 @@
   resolved "https://registry.yarnpkg.com/@eslint/js/-/js-8.35.0.tgz#b7569632b0b788a0ca0e438235154e45d42813a7"
   integrity sha512-JXdzbRiWclLVoD8sNUjR443VVlYqiYmDVT6rGUEIEHU5YJW0gaVZwV2xgM7D4arkvASqD0IlLUVjHiFuxaftRw==
 
+"@faker-js/faker@^7.6.0":
+  version "7.6.0"
+  resolved "https://registry.yarnpkg.com/@faker-js/faker/-/faker-7.6.0.tgz#9ea331766084288634a9247fcd8b84f16ff4ba07"
+  integrity sha512-XK6BTq1NDMo9Xqw/YkYyGjSsg44fbNwYRx7QK2CuoQgyy+f1rrTDHoExVM5PsyXCtfl2vs2vVJ0MN0yN6LppRw==
+
 "@humanwhocodes/config-array@^0.11.8":
   version "0.11.8"
   resolved "https://registry.yarnpkg.com/@humanwhocodes/config-array/-/config-array-0.11.8.tgz#03595ac2075a4dc0f191cc2131de14fbd7d410b9"
@@ -4246,7 +4251,14 @@ cosmiconfig@^7.0.0:
     path-type "^4.0.0"
     yaml "^1.10.0"
 
-cross-spawn@^7.0.2, cross-spawn@^7.0.3:
+cross-env@^7.0.3:
+  version "7.0.3"
+  resolved "https://registry.yarnpkg.com/cross-env/-/cross-env-7.0.3.tgz#865264b29677dc015ba8418918965dd232fc54cf"
+  integrity sha512-+/HKd6EgcQCJGh2PSjZuUitQBQynKor4wrFbRg4DtAgS1aWO+gU52xpH7M9ScGgXSYmAVS9bIJ8EzuaGw0oNAw==
+  dependencies:
+    cross-spawn "^7.0.1"
+
+cross-spawn@^7.0.1, cross-spawn@^7.0.2, cross-spawn@^7.0.3:
   version "7.0.3"
   resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-7.0.3.tgz#f73a85b9d5d41d045551c177e2882d4ac85728a6"
   integrity sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==
@@ -7372,10 +7384,12 @@ natural-compare@^1.4.0:
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
   integrity sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==
 
-near-social-bridge@^1.0.0-beta9:
-  version "1.0.0-beta9"
-  resolved "https://registry.yarnpkg.com/near-social-bridge/-/near-social-bridge-1.0.0-beta9.tgz#83df1906b50ffaff9b4f58f631724c4a876686d2"
-  integrity sha512-LPoGRElSfAIL8PEfo9vTnmwPYKJetltD4/5UyaYjmVNtO5Gd52iLrJJpNqA7qx7xQezrjNtOZPhAk4PqynrC7g==
+near-social-bridge@^1.0.0-rc1:
+  version "1.0.0-rc1"
+  resolved "https://registry.yarnpkg.com/near-social-bridge/-/near-social-bridge-1.0.0-rc1.tgz#f5dbef514f0f37bec16836a40208c9c54dacd475"
+  integrity sha512-SRvSiq3nmX3cSDJoe8NFP2tWBJ6TrhUvAOh4B4IsEUdNHkEVovyTGm+VFayb2vG4zhluwt2qRyn9sX1hMdGcVQ==
+  dependencies:
+    "@faker-js/faker" "^7.6.0"
 
 negotiator@0.6.3:
   version "0.6.3"

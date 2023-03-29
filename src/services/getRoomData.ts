@@ -1,4 +1,4 @@
-import request from "near-social-bridge/request";
+import { request } from "near-social-bridge/request";
 
 export interface RoomMessage {
   accountId: string;
@@ -15,7 +15,7 @@ export interface GetRoomDataResponse {
   messages?: RoomMessage[];
 }
 
-interface GetRoomDataPayload {
+export interface GetRoomDataPayload {
   roomId: string;
 }
 

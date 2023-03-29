@@ -1,1 +1,2 @@
 - Capacidade de enviar fotos/arquivos usando IPFS
+- Melhorar visualizador de imagem (esta distorcido em telas de celular)

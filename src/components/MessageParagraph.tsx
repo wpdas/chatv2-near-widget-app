@@ -15,7 +15,7 @@ const MessageParagraph: React.FC<Props> = ({ text, itsMe, onClickLink }) => {
       return (
         <Link
           as="b"
-          color="teal.500"
+          color={itsMe ? "teal.500" : "white"}
           key={word + Date.now()}
           onClick={() => onClickLink(word)}
         >
@@ -39,6 +39,7 @@ const MessageParagraph: React.FC<Props> = ({ text, itsMe, onClickLink }) => {
         borderRadius={8}
         borderTopRightRadius={0}
         maxW="85%"
+        overflowWrap="anywhere"
       >
         {textComponents}
       </Text>
@@ -57,6 +58,7 @@ const MessageParagraph: React.FC<Props> = ({ text, itsMe, onClickLink }) => {
       borderRadius={8}
       borderTopLeftRadius={0}
       maxW="85%"
+      overflowWrap="anywhere"
     >
       {textComponents}
     </Text>

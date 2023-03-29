@@ -17,9 +17,15 @@ const IPFS_NEAR_SOCIAL_THUMBNAIL_URL =
 const Message: React.FC<Props> = ({ message }) => {
   const auth = useAuth();
   const itsMe = auth.user?.accountId === message.accountId;
-  const avatarUrl = message.value.userAvatarImage
-    ? `${IPFS_NEAR_SOCIAL_THUMBNAIL_URL}${message.value.userAvatarImage}`
-    : undefined;
+  const hasAvatarImage = !!message.value.userAvatarImage;
+
+  // Get regular image url or ipfs stored image url
+  const avatarUrl =
+    hasAvatarImage && message.value.userAvatarImage.includes("http")
+      ? message.value.userAvatarImage
+      : message.value.userAvatarImage
+      ? `${IPFS_NEAR_SOCIAL_THUMBNAIL_URL}${message.value.userAvatarImage}`
+      : undefined;
 
   const [medias, setMedias] = useState<string[]>([]);
   const [viewImageUrl, setViewImageUrl] = useState("");

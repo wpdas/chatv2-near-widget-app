@@ -1,19 +1,16 @@
-import { ChakraProvider } from "@chakra-ui/react";
-import { NearSocialBridgeProvider } from "near-social-bridge";
-import RoomsProvider from "./contexts/RoomsProvider";
-import Routes from "./routes/Routes";
+import { lazy, Suspense } from "react";
+import PureLoader from "./PureLoader";
 
-import Loading from "./components/Loading";
+// Loads the app faster
+const Providers = lazy(() => import("./Providers"));
 
 const App = () => {
   return (
-    <ChakraProvider>
-      <NearSocialBridgeProvider fallback={<Loading />}>
-        <RoomsProvider>
-          <Routes />
-        </RoomsProvider>
-      </NearSocialBridgeProvider>
-    </ChakraProvider>
+    <>
+      <Suspense fallback={<PureLoader />}>
+        <Providers />
+      </Suspense>
+    </>
   );
 };
 
