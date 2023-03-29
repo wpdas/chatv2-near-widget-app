@@ -53,7 +53,7 @@ const Message: React.FC<Props> = ({ message }) => {
     return (
       <Box display="flex" flexDirection="column" mb={8}>
         <Box display="flex" alignItems="center">
-          <Avatar name="Dan Abrahmov" src={avatarUrl} />
+          <Avatar name={message.value.userName} src={avatarUrl} />
           <Text
             textTransform="capitalize"
             as="b"
@@ -100,7 +100,7 @@ const Message: React.FC<Props> = ({ message }) => {
   return (
     <Box display="flex" flexDirection="column" alignItems="end" mb={8}>
       <Box display="flex" alignItems="center" flexDirection="row-reverse">
-        <Avatar name="Dan Abrahmov" src={avatarUrl} />
+        <Avatar name={message.value.userName} src={avatarUrl} />
         <Text
           textTransform="capitalize"
           as="b"
