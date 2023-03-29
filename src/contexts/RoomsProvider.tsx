@@ -23,7 +23,7 @@ const RoomsProvider: React.FC<{ children: React.ReactNode }> = ({
   const fetch = useCallback(() => {
     getRoomsList()
       .then((response) => {
-        console.log("Chamou re fetch:", response);
+        setRoomsList(response.roomsList);
         if (response.error) {
           console.error(response.error);
         }
