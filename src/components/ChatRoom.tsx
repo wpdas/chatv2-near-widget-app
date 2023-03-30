@@ -43,7 +43,11 @@ const ChatRoom: React.FC<Props> = ({ roomId, showLeaveButton }) => {
   const scrollMessageBoxToBottom = useCallback(() => {
     if (messageBoxRef.current) {
       const messageBox = messageBoxRef.current;
-      messageBox.scrollTo(0, messageBox.scrollHeight);
+      messageBox.scrollTo({
+        top: messageBox.scrollHeight,
+        left: 0,
+        behavior: "smooth",
+      });
     }
   }, [messageBoxRef]);
 
@@ -140,6 +144,11 @@ const ChatRoom: React.FC<Props> = ({ roomId, showLeaveButton }) => {
   useEffect(() => {
     scrollMessageBoxToBottom();
   }, [pendingMessages, scrollMessageBoxToBottom]);
+
+  // Force go to bottom after some images are loaded
+  useEffect(() => {
+    setTimeout(scrollMessageBoxToBottom, 1500);
+  }, [roomId, scrollMessageBoxToBottom]);
 
   const goToHome = () => {
     navigation.push("Home");
@@ -239,7 +248,7 @@ const ChatRoom: React.FC<Props> = ({ roomId, showLeaveButton }) => {
             </Box>
           </>
         ) : (
-          <Loading pt="30%" height={400} />
+          <Loading height={400} />
         )}
       </Box>
     </Box>

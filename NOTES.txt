@@ -1,2 +1,4 @@
 - Capacidade de enviar fotos/arquivos usando IPFS
-- Melhorar visualizador de imagem (esta distorcido em telas de celular)
+- Adicionar som de notificação quando uma mensagem chegar na sala atual (on/off button)?
+- Colocar a hora da mensagem (atualizar a interface Message e aceitar dados antigos)
+depois de carregar imagens

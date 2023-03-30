@@ -1,11 +1,11 @@
+import { useEffect, useState } from "react";
 import { Avatar, Box, Image, Text } from "@chakra-ui/react";
 import { useAuth } from "near-social-bridge/auth";
-import { useEffect, useState } from "react";
+import ImageViewer from "react-simple-image-viewer";
 import { RoomMessage } from "../services/getRoomData";
 import extractUrlFromString from "../utils/extractUrlFromString";
 import isImageUrl from "../utils/isImageUrl";
 import MessageParagraph from "./MessageParagraph";
-import ViewImageModal from "./ViewImageModal";
 
 type Props = {
   message: RoomMessage;
@@ -72,13 +72,14 @@ const Message: React.FC<Props> = ({ message }) => {
 
         {/* Show images (medias) if found */}
         {medias.length > 0 && (
-          <Box mt={2} ml={10} display="flex">
+          <Box ml={10} display="flex" flexWrap="wrap">
             {medias.map((media) => (
               <Image
                 borderRadius={12}
                 cursor="pointer"
                 src={media}
                 key={media}
+                mt={2}
                 ml={2}
                 maxHeight={200}
                 onClick={() => onClickImageMedia(media)}
@@ -87,10 +88,15 @@ const Message: React.FC<Props> = ({ message }) => {
           </Box>
         )}
         {viewImageUrl && (
-          <ViewImageModal
-            imageUrl={viewImageUrl}
-            isOpen={viewImageUrl !== undefined}
+          <ImageViewer
+            src={[viewImageUrl]}
+            currentIndex={0}
             onClose={onCloseImageView}
+            disableScroll={false}
+            backgroundStyle={{
+              backgroundColor: "rgba(0,0,0,0.9)",
+            }}
+            closeOnClickOutside={true}
           />
         )}
       </Box>
@@ -118,13 +124,14 @@ const Message: React.FC<Props> = ({ message }) => {
 
       {/* Show images (medias) if found */}
       {medias.length > 0 && (
-        <Box mt={2} mr={10} display="flex" flexDirection="row-reverse">
+        <Box mr={10} display="flex" flexDirection="row-reverse" flexWrap="wrap">
           {medias.map((media) => (
             <Image
               borderRadius={12}
               cursor="pointer"
               src={media}
               key={media}
+              mt={2}
               mr={2}
               maxHeight={200}
               onClick={() => onClickImageMedia(media)}
@@ -133,10 +140,15 @@ const Message: React.FC<Props> = ({ message }) => {
         </Box>
       )}
       {viewImageUrl && (
-        <ViewImageModal
-          imageUrl={viewImageUrl}
-          isOpen={viewImageUrl !== undefined}
+        <ImageViewer
+          src={[viewImageUrl]}
+          currentIndex={0}
           onClose={onCloseImageView}
+          disableScroll={false}
+          backgroundStyle={{
+            backgroundColor: "rgba(0,0,0,0.9)",
+          }}
+          closeOnClickOutside={true}
         />
       )}
     </Box>

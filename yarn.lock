@@ -7387,10 +7387,10 @@ natural-compare@^1.4.0:
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
   integrity sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==
 
-near-social-bridge@^1.0.0-rc3:
-  version "1.0.0-rc3"
-  resolved "https://registry.yarnpkg.com/near-social-bridge/-/near-social-bridge-1.0.0-rc3.tgz#80db70bdeff37ca57caa0ecc62420102464f276c"
-  integrity sha512-o/wdpL7XjyQ6KvErq3swDPcwlDc+1ySzU0P1B/gwdKbShNhPg/wYHR1vt7FfOZ85efOLvxvB7h01SiitjX0t9Q==
+near-social-bridge@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/near-social-bridge/-/near-social-bridge-1.0.0.tgz#a908e4f1f509c2ab5f89a4fba6de279247d7875c"
+  integrity sha512-iZaqPgAF66+1b84S2PvdUn6q5OF0z6WbilGBcxeJNdqaRqR2H5mruf4mLfHgyH9s3+MpRogAis5WTHjeEpsRDw==
   dependencies:
     "@ngneat/falso" "^6.4.0"
 
@@ -8668,6 +8668,11 @@ react-scripts@5.0.1:
     workbox-webpack-plugin "^6.4.1"
   optionalDependencies:
     fsevents "^2.3.2"
+
+react-simple-image-viewer@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/react-simple-image-viewer/-/react-simple-image-viewer-1.2.2.tgz#2a93413512b76ce8d336dd5fa19660a970d05be4"
+  integrity sha512-Vk9p6Glm7uE4cSEBGkqZPGC3qoZcAwd48nq5/JN13NKd9rUrUIWZWFEmRzO+FVwl6c0UdjSDkthGoaoiYeWVjg==
 
 react-style-singleton@^2.2.1:
   version "2.2.1"
