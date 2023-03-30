@@ -1,5 +1,4 @@
-import { createStackNavigator } from "near-social-bridge/navigation";
-import { useAuth } from "near-social-bridge/auth";
+import { createStackNavigator, useAuth } from "near-social-bridge";
 import { NavigationProps } from "./NavigationProps";
 
 import Home from "../screens/Home";
