@@ -1,8 +1,6 @@
 import { createMockUser } from "near-social-bridge/request/mock";
 
-export const userMockInfo = createMockUser({
-  imageIPFScid: `https://i.pravatar.cc/150?u=32`,
-});
+export const userMockInfo = createMockUser();
 
 export const roomsList = [
   "near-social-community",

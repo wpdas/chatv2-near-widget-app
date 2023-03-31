@@ -1,4 +1,4 @@
-import { createMock, mockUser } from "near-social-bridge/request/mock";
+import { createMock, mockUser } from "near-social-bridge";
 import getRoomDataMock from "./services/getRoomData.mock";
 import getRoomsListMock from "./services/getRoomsList.mock";
 import registerNewRoomMock from "./services/registerNewRoom.mock";
