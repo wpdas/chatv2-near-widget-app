@@ -190,7 +190,7 @@ const ChatRoom: React.FC<Props> = ({
 
   // Force go to bottom after some images are loaded
   useEffect(() => {
-    setTimeout(scrollMessageBoxToBottom, 1500);
+    setTimeout(scrollMessageBoxToBottom, 2200);
   }, [currentRoomId, scrollMessageBoxToBottom]);
 
   const goToHome = () => {
