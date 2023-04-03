@@ -276,7 +276,7 @@ const ChatRoom: React.FC<Props> = ({
               bg="teal.50"
               p={4}
               overflowX="auto"
-              height={596}
+              height={604}
               background="#F7F8FA"
             >
               {sortedMessages.length === 0 && (
