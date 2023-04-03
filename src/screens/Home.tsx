@@ -13,13 +13,16 @@ import Content from "../components/Content";
 import NewRoomModal from "../components/NewRoomModal";
 import RecentRooms from "../components/RecentRooms";
 import ChatRoom from "../components/ChatRoom";
+import useTypedInitialPayload from "../hooks/useTypedInitialPayload";
 
 const Home: React.FC<PreHomeScreenProps> = ({ navigation }) => {
   const [isLargerThan700] = useMediaQuery("(min-width: 700px)");
-  const [roomId, setRoomId] = useState("near-social-community");
+  const { room } = useTypedInitialPayload();
+  const [roomId, setRoomId] = useState(room || "near-social-community");
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [isReady, setIsReady] = useState(true);
   const [error, setError] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
 
   const onErrorCreatingNewRoom = (error: string) => {
     setError(error);
@@ -46,12 +49,25 @@ const Home: React.FC<PreHomeScreenProps> = ({ navigation }) => {
     setRoomId(roomId);
   }, []);
 
+  const onShareRoomHandler = useCallback(() => {
+    setSuccessMessage("Room link copied to clipboard!");
+    setTimeout(() => {
+      setSuccessMessage("");
+    }, 4000);
+  }, []);
+
   return (
     <Container>
       {error && (
         <Alert status="error">
           <AlertIcon />
           {error}
+        </Alert>
+      )}
+      {successMessage && (
+        <Alert status="success">
+          <AlertIcon />
+          {successMessage}
         </Alert>
       )}
       <Content direction="row">
@@ -62,7 +78,7 @@ const Home: React.FC<PreHomeScreenProps> = ({ navigation }) => {
         {isLargerThan700 && (
           <>
             {isReady ? (
-              <ChatRoom roomId={roomId} />
+              <ChatRoom roomId={roomId} onShareSuccess={onShareRoomHandler} />
             ) : (
               <Box w="100%" display="flex">
                 <Spinner

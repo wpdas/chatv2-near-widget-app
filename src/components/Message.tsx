@@ -33,13 +33,22 @@ const Message: React.FC<Props> = ({ message }) => {
   // Check medias
   useEffect(() => {
     const urls = extractUrlFromString(message.value.text);
+    let urlImageMedias: string[] = [];
+
     if (urls) {
-      const messageMedias = urls.filter((url) => {
+      urlImageMedias = urls.filter((url) => {
         return isImageUrl(url);
       });
-      setMedias(messageMedias || []);
     }
-  }, [message.value.text]);
+
+    // Check base64 uploaded images
+    if (message.value.b64Image) {
+      setMedias([...urlImageMedias, message.value.b64Image]);
+      return;
+    }
+
+    setMedias(urlImageMedias || []);
+  }, [message.value.text, message.value.b64Image]);
 
   const onClickImageMedia = (mediaUrl: string) => {
     setViewImageUrl(mediaUrl);

@@ -1,4 +1,8 @@
-import { createMock, mockUser } from "near-social-bridge";
+import {
+  createMock,
+  mockInitialPayload,
+  mockUser,
+} from "near-social-bridge/request/mock";
 import getRoomDataMock from "./services/getRoomData.mock";
 import getRoomsListMock from "./services/getRoomsList.mock";
 import registerNewRoomMock from "./services/registerNewRoom.mock";
@@ -6,6 +10,12 @@ import sendMessageMock from "./services/sendMessage.mock";
 import { userMockInfo } from "./shared";
 
 const mock = () => {
+  // Mock initial payload
+  mockInitialPayload({
+    mainDomain: window.location.host,
+    // room: "dragon-ball-z",
+  });
+
   // Mock user
   mockUser(userMockInfo);
 
@@ -14,6 +24,7 @@ const mock = () => {
   createMock("get-rooms-list", getRoomsListMock);
   createMock("send-message", sendMessageMock);
   createMock("register-new-room", registerNewRoomMock);
+  createMock("set-clipboard-text", () => ({}));
 };
 
 export default mock;

@@ -1,4 +1,12 @@
+- Compartilhar link da sala para entrar direto
 - Capacidade de enviar fotos/arquivos usando IPFS
 - Adicionar som de notificação quando uma mensagem chegar na sala atual (on/off button)?
 - Colocar a hora da mensagem (atualizar a interface Message e aceitar dados antigos)
 depois de carregar imagens
+
+FEITO:
+
+- Fix scrollbar style - DONE
+- Fix RecentRooms height - DONE
+- Share Room button (limited)
+- Send local images - DONE

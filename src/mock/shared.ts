@@ -1,4 +1,5 @@
 import { createMockUser } from "near-social-bridge/request/mock";
+import { RoomMessage } from "../services/getRoomData";
 
 export const userMockInfo = createMockUser();
 
@@ -8,7 +9,7 @@ export const roomsList = [
   "test-room-1",
 ];
 
-export const messages = [
+export const messages: RoomMessage[] = [
   {
     accountId: "wendersonpires.near",
     blockHeight: 0,

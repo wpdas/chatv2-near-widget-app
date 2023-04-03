@@ -2972,6 +2972,13 @@
   resolved "https://registry.yarnpkg.com/@types/range-parser/-/range-parser-1.2.4.tgz#cd667bcfdd025213aafb7ca5915a932590acdcdc"
   integrity sha512-EEhsLsD6UsDM1yFhAvy0Cjr6VwmpMWqFBCb9w07wVugF7w9nfajxLuVmngTIpgS6svCnm6Vaw+MZhoDCKnOfsw==
 
+"@types/react-copy-to-clipboard@^5.0.4":
+  version "5.0.4"
+  resolved "https://registry.yarnpkg.com/@types/react-copy-to-clipboard/-/react-copy-to-clipboard-5.0.4.tgz#558f2c38a97f53693e537815f6024f1e41e36a7e"
+  integrity sha512-otTJsJpofYAeaIeOwV5xBUGpo6exXG2HX7X4nseToCB2VgPEBxGBHCm/FecZ676doNR7HCSTVtmohxfG2b3/yQ==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-dom@^18.0.0":
   version "18.0.11"
   resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-18.0.11.tgz#321351c1459bc9ca3d216aefc8a167beec334e33"
@@ -5390,6 +5397,13 @@ file-loader@^6.2.0:
     loader-utils "^2.0.0"
     schema-utils "^3.0.0"
 
+file-selector@0.2.4:
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/file-selector/-/file-selector-0.2.4.tgz#7b98286f9dbb9925f420130ea5ed0a69238d4d80"
+  integrity sha512-ZDsQNbrv6qRi1YTDOEWzf5J2KjZ9KMI1Q2SGeTkCJmNNW25Jg4TW4UMcmoqcg4WrAyKRcpBXdbWRxkfrOzVRbA==
+  dependencies:
+    tslib "^2.0.3"
+
 filelist@^1.0.1:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/filelist/-/filelist-1.0.4.tgz#f78978a1e944775ff9e62e744424f215e58352b5"
@@ -7379,10 +7393,10 @@ natural-compare@^1.4.0:
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
   integrity sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==
 
-near-social-bridge@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/near-social-bridge/-/near-social-bridge-1.0.1.tgz#36c2bc603ce5174fed263ffd85573c6fc57b16a5"
-  integrity sha512-BWn5INYIiQKWBF4NSJe6FOj0FWRU1GKIScM8exEIiOTTsR6oIKRPKNWQv7TXyE/uCQcEypVotAJoYsimDiRWHw==
+near-social-bridge@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/near-social-bridge/-/near-social-bridge-1.1.0.tgz#dc9f2f80d4abe8dd00baaa159155a05957e82fcf"
+  integrity sha512-aTA/ZfyaI00mLoxK9AyZz1a0EFyBgJuHrweqtPrLUYIKGqzTsdBzaTckx2LcCA4AEt3mAMxqkG3HJxaWYPzkPQ==
 
 negotiator@0.6.3:
   version "0.6.3"
@@ -9852,6 +9866,13 @@ use-callback-ref@^1.3.0:
   integrity sha512-3FT9PRuRdbB9HfXhEq35u4oZkvpJ5kuYbpqhCfmiZyReuRgpnhDlbr2ZEnnuS0RrJAPn6l23xjFg9kpDM+Ms7w==
   dependencies:
     tslib "^2.0.0"
+
+use-file-picker@^1.5.2:
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/use-file-picker/-/use-file-picker-1.5.2.tgz#2e273ed6c2614b956d0f5b7a7e65b2b59b672187"
+  integrity sha512-quBXHlUqjadSHj62vADzWYazHrH0oJio5u9GlxAG71vFYfS9KFNm1tFtZ3IMKxUMg9ADKGFg1V8caLWF5ajrDQ==
+  dependencies:
+    file-selector "0.2.4"
 
 use-sidecar@^1.1.2:
   version "1.1.2"

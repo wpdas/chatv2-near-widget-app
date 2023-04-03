@@ -7,6 +7,7 @@ export interface RoomMessage {
     userName: string;
     userAvatarImage: string;
     text: string;
+    b64Image?: string;
   };
 }
 

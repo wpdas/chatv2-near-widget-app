@@ -9,6 +9,7 @@ interface SendMessagePayload {
   message: string;
   userName: string;
   userAvatarImage: string;
+  b64Image?: string;
 }
 
 const sendMessage = (payload: SendMessagePayload) => {
@@ -18,6 +19,7 @@ const sendMessage = (payload: SendMessagePayload) => {
       userName: payload.userName,
       userAvatarImage: payload.userAvatarImage,
       text: payload.message,
+      b64Image: payload.b64Image,
     },
   });
 };

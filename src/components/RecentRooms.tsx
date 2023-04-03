@@ -90,7 +90,7 @@ const RecentRooms: React.FC<Props> = ({ onSelectRoom, onClickCreateRoom }) => {
           </InputGroup>
         </Stack>
         {roomsList.length > 0 ? (
-          <Stack w="100%" pl={4} pr={4} overflow="scroll" height={400} pt={4}>
+          <Stack w="100%" pl={4} pr={4} overflow="auto" height={538} pt={4}>
             {searchText ? (
               <>
                 {filteredRoomsList.map((roomName) => (

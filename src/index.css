@@ -73,3 +73,18 @@ input {
     opacity: 0;
   }
 }
+
+/* Scrollbar */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+ 
+::-webkit-scrollbar-thumb {
+  background-color: rgb(146, 197, 190);
+  outline: 1px solid rgba(53, 93, 117, 0);
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}

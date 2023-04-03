@@ -12,6 +12,7 @@ const sendMessageMock = (payload: any) => {
       userName: payload.message.userName,
       userAvatarImage: payload.message.userAvatarImage,
       text: payload.message.text,
+      b64Image: payload.message.b64Image,
     },
   });
 };
