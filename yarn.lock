@@ -7084,7 +7084,7 @@ expect@^29.0.0:
     jest-message-util "^29.5.0"
     jest-util "^29.5.0"
 
-express@^4.17.3:
+express@^4.17.3, express@^4.18.2:
   version "4.18.2"
   resolved "https://registry.yarnpkg.com/express/-/express-4.18.2.tgz#3fabe08296e930c796c19e3c516979386ba9fd59"
   integrity sha512-5/PsL6iGPdfQ/lKM1UuielYgv3BUoJfz1aUwU9vHZ+J7gyvwdQXFEBIEIaxeGf0GIcreATNyBExtalisDbuMqQ==
@@ -9885,10 +9885,10 @@ near-social-bridge@^1.1.0:
   resolved "https://registry.yarnpkg.com/near-social-bridge/-/near-social-bridge-1.1.0.tgz#dc9f2f80d4abe8dd00baaa159155a05957e82fcf"
   integrity sha512-aTA/ZfyaI00mLoxK9AyZz1a0EFyBgJuHrweqtPrLUYIKGqzTsdBzaTckx2LcCA4AEt3mAMxqkG3HJxaWYPzkPQ==
 
-near-social-local-viewer@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/near-social-local-viewer/-/near-social-local-viewer-1.0.0.tgz#7913131cea3e019ef8a70858ea167ac7fcd75d11"
-  integrity sha512-JKn/SuADcAs+MRri+EhDXtj9gj4ezrYi+qm6vZoSg4rFIT2uVD3FABtJ7VVHF0Z9QfCXcVvIOkf95FjH+0Wr5g==
+near-social-local-viewer@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/near-social-local-viewer/-/near-social-local-viewer-2.0.0.tgz#c1a8cb879b981b14286524f283050304db1498d7"
+  integrity sha512-t/n1XeMgAL/x5DwvGX5YskY6Up+Ob2ohVb2Abuc6oDX5GAW99Z6C5f6UonF4QeJJB9f0vYgrZ1UxBtlXNb3YJg==
   dependencies:
     "@monaco-editor/react" "^4.4.6"
     "@near-wallet-selector/core" "^7.9.0"
@@ -9907,6 +9907,7 @@ near-social-local-viewer@^1.0.0:
     concurrently "^8.0.1"
     cors "^2.8.5"
     error-polyfill "^0.1.2"
+    express "^4.18.2"
     local-storage "^2.0.0"
     near-api-js "^0.45.1"
     near-social-vm "git+https://github.com/NearSocial/VM.git#1.1.0"

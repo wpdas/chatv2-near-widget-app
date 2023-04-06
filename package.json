@@ -30,7 +30,7 @@
     "build": "cross-env REACT_APP_ENV=production react-scripts build && cp -rf build dist && rm -rf build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "start:widget": "npx init-viewer widget/ChatV2.jsx "
+    "start:widget": "npx init-viewer widget/"
   },
   "eslintConfig": {
     "extends": [
@@ -54,6 +54,6 @@
     "@types/react-copy-to-clipboard": "^5.0.4",
     "cross-env": "^7.0.3",
     "near-social-bridge": "^1.1.0",
-    "near-social-local-viewer": "^1.0.0"
+    "near-social-local-viewer": "^2.0.0"
   }
 }
