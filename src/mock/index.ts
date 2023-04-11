@@ -1,6 +1,6 @@
 import {
   createMock,
-  mockInitialPayload,
+  // mockInitialPayload,
   mockUser,
 } from "near-social-bridge/request/mock";
 import getRoomDataMock from "./services/getRoomData.mock";
@@ -11,10 +11,10 @@ import { userMockInfo } from "./shared";
 
 const mock = () => {
   // Mock initial payload
-  mockInitialPayload({
-    mainDomain: window.location.host,
-    // room: "dragon-ball-z",
-  });
+  // mockInitialPayload({
+  //   mainChatURL: 'http://localhost:3001/#/view/ChatV2',
+  //   room: "dragon-ball-z",
+  // });
 
   // Mock user
   mockUser(userMockInfo);
@@ -24,7 +24,7 @@ const mock = () => {
   createMock("get-rooms-list", getRoomsListMock);
   createMock("send-message", sendMessageMock);
   createMock("register-new-room", registerNewRoomMock);
-  createMock("set-clipboard-text", () => ({}));
+  // createMock("set-clipboard-text", () => ({}));
 };
 
 export default mock;

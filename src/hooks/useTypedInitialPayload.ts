@@ -1,7 +1,7 @@
 import { useInitialPayload } from "near-social-bridge/hooks";
 
 type InitialPayloadProps = {
-  mainDomain?: string;
+  mainChatURL?: string;
   room?: string; // auto join a specific room
 };
 

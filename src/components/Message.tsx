@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Avatar, Box, Image, Text } from "@chakra-ui/react";
 import { useAuth } from "near-social-bridge/auth";
 import ImageViewer from "react-simple-image-viewer";
+import TimeAgo from "javascript-time-ago";
+import en from "javascript-time-ago/locale/en";
 import { RoomMessage } from "../services/getRoomData";
 import extractUrlFromString from "../utils/extractUrlFromString";
 import isImageUrl from "../utils/isImageUrl";
@@ -9,7 +11,12 @@ import MessageParagraph from "./MessageParagraph";
 
 type Props = {
   message: RoomMessage;
+  timestamp?: number;
 };
+
+// Create formatter (English).
+TimeAgo.addDefaultLocale(en);
+const timeAgo = new TimeAgo("en-US");
 
 const IPFS_NEAR_SOCIAL_THUMBNAIL_URL =
   "https://i.near.social/thumbnail/https://ipfs.near.social/ipfs/";
@@ -64,14 +71,17 @@ const Message: React.FC<Props> = ({ message }) => {
         <Box display="flex" alignItems="center">
           <Avatar name={message.value.userName} src={avatarUrl} />
           <Text
+            ml={4}
             textTransform="capitalize"
             as="b"
             fontSize="sm"
-            ml={4}
             color="#515151"
           >
             {message.value.userName}
           </Text>
+          {message.value.timestamp && (
+            <Text ml={1}>- {timeAgo.format(message.value.timestamp)}</Text>
+          )}
         </Box>
         <MessageParagraph
           text={message.value.text}
@@ -116,13 +126,14 @@ const Message: React.FC<Props> = ({ message }) => {
     <Box display="flex" flexDirection="column" alignItems="end" mb={8}>
       <Box display="flex" alignItems="center" flexDirection="row-reverse">
         <Avatar name={message.value.userName} src={avatarUrl} />
-        <Text
-          textTransform="capitalize"
-          as="b"
-          fontSize="sm"
-          mr={4}
-          color="#515151"
-        >
+        {message.value.timestamp ? (
+          <Text mr={4} ml={1}>
+            - {timeAgo.format(message.value.timestamp)}
+          </Text>
+        ) : (
+          <Text mr={4} />
+        )}
+        <Text textTransform="capitalize" as="b" fontSize="sm" color="#515151">
           {message.value.userName}
         </Text>
       </Box>

@@ -18,20 +18,20 @@ import {
   Tooltip,
   useMediaQuery,
 } from "@chakra-ui/react";
-// import { RiSendPlaneFill, RiImageAddFill, RiShareFill } from "react-icons/ri";
-import { RiSendPlaneFill, RiImageAddFill } from "react-icons/ri";
+import { RiSendPlaneFill, RiImageAddFill, RiShareFill } from "react-icons/ri";
+// import { RiSendPlaneFill, RiImageAddFill } from "react-icons/ri";
 import truncate from "../utils/truncate";
 import Message from "../components/Message";
 import Loading from "../components/Loading";
 import sendMessage from "../services/sendMessage";
 import getRoomData, { RoomMessage } from "../services/getRoomData";
 import useTypedNavigation from "../hooks/useTypedNavigator";
-// import useTypedInitialPayload from "../hooks/useTypedInitialPayload";
+import useTypedInitialPayload from "../hooks/useTypedInitialPayload";
 import useRoomsList from "../hooks/useRoomsList";
 import { useFilePicker } from "use-file-picker";
 import resizeImage from "../utils/resizeImage";
 import MessageImage from "./MessageImage";
-// import setClipboardText from "../services/setClipboardText";
+import setClipboardText from "../services/setClipboardText";
 
 type Props = {
   roomId: string;
@@ -54,7 +54,7 @@ const ChatRoom: React.FC<Props> = ({
   const [ready, setReady] = useState(false);
   const messageBoxRef = useRef<any>();
   const auth = useAuth();
-  // const { mainDomain } = useTypedInitialPayload();
+  const { mainChatURL } = useTypedInitialPayload();
   const navigation = useTypedNavigation();
   const [openFileSelector, { filesContent, clear }] = useFilePicker({
     accept: "image/*",
@@ -140,6 +140,7 @@ const ChatRoom: React.FC<Props> = ({
             userName: auth.user?.profileInfo?.name!,
             userAvatarImage: auth.user?.profileInfo?.image?.ipfs_cid!,
             b64Image: b64ImageToSend || undefined,
+            timestamp: Date.now(),
           },
         },
       ]);
@@ -152,6 +153,7 @@ const ChatRoom: React.FC<Props> = ({
         userName: auth.user?.profileInfo?.name!,
         userAvatarImage: auth.user?.profileInfo?.image?.ipfs_cid!,
         b64Image: b64ImageToSend || undefined,
+        timestamp: Date.now(),
       });
 
       clear(); // image data
@@ -206,15 +208,9 @@ const ChatRoom: React.FC<Props> = ({
     }
   }, [filesContent]);
 
-  // const onShareClick = () => {
-  //   setClipboardText({ text: `${mainDomain}/?room=${currentRoomId}` }).then(
-  //     () => {
-  //       if (onShareSuccess) {
-  //         onShareSuccess();
-  //       }
-  //     }
-  //   );
-  // };
+  const onShareClick = () => {
+    setClipboardText({ text: `${mainChatURL}/?room=${currentRoomId}` });
+  };
 
   const onDeleteImageToSend = () => {
     setB64ImageToSend(null);
@@ -242,7 +238,7 @@ const ChatRoom: React.FC<Props> = ({
             Room: {roomName}
           </Heading>
           <Box>
-            {/* {mainDomain && (
+            {mainChatURL && (
               <Tooltip label="share room" placement="bottom">
                 <IconButton
                   aria-label="Share room"
@@ -258,7 +254,7 @@ const ChatRoom: React.FC<Props> = ({
                   icon={<Icon as={RiShareFill} color="white" />}
                 />
               </Tooltip>
-            )} */}
+            )}
 
             {showLeaveButton && (
               <Button ml={2} size="sm" colorScheme="blue" onClick={goToHome}>
@@ -276,7 +272,7 @@ const ChatRoom: React.FC<Props> = ({
               bg="teal.50"
               p={4}
               overflowX="auto"
-              height={604}
+              height={596}
               background="#F7F8FA"
             >
               {sortedMessages.length === 0 && (

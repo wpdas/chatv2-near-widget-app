@@ -16,6 +16,7 @@
     "@types/react-dom": "^18.0.0",
     "framer-motion": "^10.6.1",
     "fuse.js": "^6.6.2",
+    "javascript-time-ago": "^2.5.9",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.8.0",
@@ -30,7 +31,7 @@
     "build": "cross-env REACT_APP_ENV=production react-scripts build && cp -rf build dist && rm -rf build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "start:widget": "npx init-viewer widget/"
+    "start:vm": "npx init-viewer widget/"
   },
   "eslintConfig": {
     "extends": [
@@ -53,7 +54,7 @@
   "devDependencies": {
     "@types/react-copy-to-clipboard": "^5.0.4",
     "cross-env": "^7.0.3",
-    "near-social-bridge": "^1.1.0",
+    "near-social-bridge": "^1.2.4",
     "near-social-local-viewer": "^2.0.2"
   }
 }

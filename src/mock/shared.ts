@@ -65,6 +65,7 @@ export const messages: RoomMessage[] = [
       userName: "Manuel",
       userAvatarImage: "https://i.pravatar.cc/150?u=2",
       text: "Cool stuff, Sarah. Where did you get this?",
+      timestamp: 1681182679331,
     },
   },
 ];

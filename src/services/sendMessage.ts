@@ -10,6 +10,7 @@ interface SendMessagePayload {
   userName: string;
   userAvatarImage: string;
   b64Image?: string;
+  timestamp?: number;
 }
 
 const sendMessage = (payload: SendMessagePayload) => {
@@ -20,6 +21,7 @@ const sendMessage = (payload: SendMessagePayload) => {
       userAvatarImage: payload.userAvatarImage,
       text: payload.message,
       b64Image: payload.b64Image,
+      timestamp: payload.timestamp,
     },
   });
 };
