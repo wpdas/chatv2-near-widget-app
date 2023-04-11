@@ -9892,10 +9892,10 @@ near-social-bridge@^1.2.4:
   resolved "https://registry.yarnpkg.com/near-social-bridge/-/near-social-bridge-1.2.4.tgz#ff4abf6afb9c9e8acb1c9037881e047a4e35f8b5"
   integrity sha512-P1oW9dwP9BE91kWogd+FEQNxqLQRz+jfnUA2LRo2I9qPBBTLnfabQIFPmN/fQYfRePlk83b8WN/6OOmtHGE/Mg==
 
-near-social-local-viewer@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/near-social-local-viewer/-/near-social-local-viewer-2.0.2.tgz#1cb1ca159d682ff9157a0f040eaa3318644f36c9"
-  integrity sha512-eS7oIGEBOvnqOli1mvuAHN3jz+tqEO8c6wmoqDLuLbq/XL16kQ3EpvCw2OxMQw+DrssRfeM2NFso+8Xp1GN7bQ==
+near-social-local-viewer@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/near-social-local-viewer/-/near-social-local-viewer-2.0.3.tgz#1c63f3b95198b700f0aa4ebae88b33b24ddeb0a0"
+  integrity sha512-2lBMhGHVNEEMC1uJndL3rW9cYaUYI51HpSTFhrJU6+s969pC0XoOAy1LwEEmQojHWQCLPhx9J06g/rZeek1eAg==
   dependencies:
     "@monaco-editor/react" "^4.4.6"
     "@near-wallet-selector/core" "^7.9.0"

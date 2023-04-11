@@ -55,6 +55,6 @@
     "@types/react-copy-to-clipboard": "^5.0.4",
     "cross-env": "^7.0.3",
     "near-social-bridge": "^1.2.4",
-    "near-social-local-viewer": "^2.0.2"
+    "near-social-local-viewer": "^2.0.3"
   }
 }

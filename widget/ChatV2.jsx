@@ -15,8 +15,6 @@ const APP_INDEX_KEY = "widget-chatv2-dev";
 // const externalAppUrl = "https://near-test-app.web.app/";
 const externalAppUrl = "http://localhost:3000";
 
-console.log(props);
-
 const path = props.path;
 const initialViewHeight = 740;
 const initialPayload = {
@@ -24,8 +22,6 @@ const initialPayload = {
   mainChatURL: "http://localhost:3001/#/view/ChatV2",
   room: props.room, // starts with this room
 };
-
-// ERRO: http://localhost:3001/#/view/ChatV2/?room=dragon-ball-z (O VM n pega o "room")
 
 State.init({
   showShareModal: false,
@@ -185,7 +181,7 @@ const setClipboardTextHandler = (request, response) => {
   if (request.payload.text) {
     State.update({ clipboardText: request.payload.text, showShareModal: true });
   }
-  response(request).send({ util: "oi" });
+  response(request).send({});
 };
 
 // Helpers
