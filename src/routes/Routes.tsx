@@ -19,17 +19,13 @@ const Routes: React.FC = () => {
   return (
     <>
       {auth.user ? (
-        <Navigator>
-          <Screen name="Home" component={Home} iframeHeight={740} />
-          <Screen
-            name="MobileChatRoom"
-            component={MobileChatRoom}
-            iframeHeight={740}
-          />
+        <Navigator autoHeightSync>
+          <Screen name="Home" component={Home} />
+          <Screen name="MobileChatRoom" component={MobileChatRoom} />
         </Navigator>
       ) : (
-        <Navigator>
-          <Screen name="LoggedOut" component={LoggedOut} iframeHeight={740} />
+        <Navigator autoHeightSync>
+          <Screen name="LoggedOut" component={LoggedOut} />
         </Navigator>
       )}
     </>
