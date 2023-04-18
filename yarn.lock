@@ -9900,10 +9900,10 @@ near-seed-phrase@^0.2.0:
     near-hd-key "^1.2.1"
     tweetnacl "^1.0.2"
 
-near-social-bridge@^1.3.2:
-  version "1.3.2"
-  resolved "https://registry.yarnpkg.com/near-social-bridge/-/near-social-bridge-1.3.2.tgz#f82153df5a1ebe5254a3bd08c5d6c6efa476bab6"
-  integrity sha512-DNEpyptUcRkSPIZMvr+LBEV62XMuYF059fRTKdzwpWe+30cMGBRq2wYiacT/bfQorjtOXwXi5wH0wnomqhoCuQ==
+near-social-bridge@^1.3.5:
+  version "1.3.5"
+  resolved "https://registry.yarnpkg.com/near-social-bridge/-/near-social-bridge-1.3.5.tgz#daf1c13db722157f0db0fb807fbed26bfa7733bc"
+  integrity sha512-dL7HlsLZHsmrPbca8X2YAY8kImaTUn6ZViK9EEliMacFgSTDJ3J8G9Etf4mScYfFLq1c2bO1ne44vneD30s/dg==
 
 near-social-local-viewer@^2.1.2:
   version "2.1.2"
