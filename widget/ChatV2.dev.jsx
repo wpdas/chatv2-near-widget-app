@@ -194,7 +194,7 @@ const fetchRooms = () => {
 
   if (!data) return null;
 
-  const sorted = data.sort((m1, m2) => m2.blockHeight - m1.blockHeight);
+  const sorted = data.sort((m1, m2) => m1.blockHeight - m2.blockHeight);
   return sorted.map((roomData) => roomData.value); // ["room-name"]
 };
 // Helpers END
@@ -222,7 +222,7 @@ return (
       <Widget
         src="wendersonpires.testnet/widget/NSLVWidget"
         props={{
-          src: "wendersonpires.near/widget/CopyToClipboardModal",
+          src: "wendersonpires.testnet/widget/CopyToClipboardModal",
           srcProps: {
             description: "Click on the button below to copy the Chat Room Link",
             text: state.clipboardText,

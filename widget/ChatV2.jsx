@@ -194,7 +194,7 @@ const fetchRooms = () => {
 
   if (!data) return null;
 
-  const sorted = data.sort((m1, m2) => m2.blockHeight - m1.blockHeight);
+  const sorted = data.sort((m1, m2) => m1.blockHeight - m2.blockHeight);
   return sorted.map((roomData) => roomData.value); // ["room-name"]
 };
 // Helpers END
