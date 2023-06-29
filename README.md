@@ -2,7 +2,7 @@
 
 This is an application running on Near Social using the NEAR blockchain network.
 
-[**Live App**](https://near.social/#/wendersonpires.near/widget/ChatV2)
+[**Live App**](https://near.org/wendersonpires.near/widget/ChatV2)
 
 ## Setup
 
