@@ -223,14 +223,14 @@ const ChatRoom: React.FC<Props> = ({
         <Box
           p={4}
           display="flex"
-          bg="teal.100"
+          bg="gray.100"
           alignItems="center"
           justifyContent="space-between"
         >
           <Heading
             textTransform="capitalize"
             size="lx"
-            textColor="teal.700"
+            textColor="gray.700"
             display="flex"
             justifyContent="space-between"
             alignItems="center"
@@ -242,8 +242,8 @@ const ChatRoom: React.FC<Props> = ({
               <Tooltip label="share room" placement="bottom">
                 <IconButton
                   aria-label="Share room"
-                  colorScheme="teal.500"
-                  bg="teal"
+                  colorScheme="gray.900"
+                  bg="#70F2A4"
                   h="1.75rem"
                   size="xs"
                   fontSize="18px"
@@ -251,13 +251,20 @@ const ChatRoom: React.FC<Props> = ({
                   height="32px"
                   borderRadius={999}
                   onClick={onShareClick}
-                  icon={<Icon as={RiShareFill} color="white" />}
+                  icon={<Icon as={RiShareFill} color="black" />}
                 />
               </Tooltip>
             )}
 
             {showLeaveButton && (
-              <Button ml={2} size="sm" colorScheme="blue" onClick={goToHome}>
+              <Button
+                ml={2}
+                size="sm"
+                colorScheme="white"
+                bg="#70F2A4"
+                color="rgb(9, 52, 46)"
+                onClick={goToHome}
+              >
                 Leave
               </Button>
             )}
@@ -269,7 +276,7 @@ const ChatRoom: React.FC<Props> = ({
             {/* Messages */}
             <Box
               ref={messageBoxRef}
-              bg="teal.50"
+              bg="gray.50"
               p={4}
               overflowX="auto"
               height={596}
@@ -334,8 +341,8 @@ const ChatRoom: React.FC<Props> = ({
                   <Tooltip label="upload image" placement="top">
                     <IconButton
                       aria-label="Send image"
-                      colorScheme="teal.500"
-                      bg="teal"
+                      colorScheme="gray.500"
+                      bg="#171923"
                       h="1.75rem"
                       size="xs"
                       ml={2}
@@ -351,8 +358,8 @@ const ChatRoom: React.FC<Props> = ({
 
                 <IconButton
                   aria-label="Send message"
-                  colorScheme="teal.500"
-                  bg="teal"
+                  colorScheme="gray.500"
+                  bg="#171923"
                   h="1.75rem"
                   size="xs"
                   fontSize="22px"

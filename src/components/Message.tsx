@@ -8,6 +8,7 @@ import { RoomMessage } from "../services/getRoomData";
 import extractUrlFromString from "../utils/extractUrlFromString";
 import isImageUrl from "../utils/isImageUrl";
 import MessageParagraph from "./MessageParagraph";
+import truncate from "../utils/truncate";
 
 type Props = {
   message: RoomMessage;
@@ -69,7 +70,12 @@ const Message: React.FC<Props> = ({ message }) => {
     return (
       <Box display="flex" flexDirection="column" mb={8}>
         <Box display="flex" alignItems="center">
-          <Avatar name={message.value.userName} src={avatarUrl} />
+          <Avatar
+            name={message.value.userName || message.accountId}
+            src={avatarUrl}
+            bg="gray.500"
+            color="white"
+          />
           <Text
             ml={4}
             textTransform="capitalize"
@@ -77,7 +83,7 @@ const Message: React.FC<Props> = ({ message }) => {
             fontSize="sm"
             color="#515151"
           >
-            {message.value.userName}
+            {truncate(message.value.userName || message.accountId, 25)}
           </Text>
           {message.value.timestamp && (
             <Text ml={1}>- {timeAgo.format(message.value.timestamp)}</Text>
@@ -125,7 +131,12 @@ const Message: React.FC<Props> = ({ message }) => {
   return (
     <Box display="flex" flexDirection="column" alignItems="end" mb={8}>
       <Box display="flex" alignItems="center" flexDirection="row-reverse">
-        <Avatar name={message.value.userName} src={avatarUrl} />
+        <Avatar
+          name={message.value.userName || message.accountId}
+          src={avatarUrl}
+          bg="gray.500"
+          color="white"
+        />
         {message.value.timestamp ? (
           <Text mr={4} ml={1}>
             - {timeAgo.format(message.value.timestamp)}
@@ -134,7 +145,7 @@ const Message: React.FC<Props> = ({ message }) => {
           <Text mr={4} />
         )}
         <Text textTransform="capitalize" as="b" fontSize="sm" color="#515151">
-          {message.value.userName}
+          {truncate(message.value.userName || message.accountId, 25)}
         </Text>
       </Box>
       <MessageParagraph

@@ -21,7 +21,7 @@ yarn start:app
 Run viewer
 
 ```sh
-yarn start:widget
+yarn start:vm
 ```
 
 Now, you can see your changes in real time. Both in React App and Widget.

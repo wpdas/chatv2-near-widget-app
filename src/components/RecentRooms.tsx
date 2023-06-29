@@ -40,7 +40,7 @@ const RecentRooms: React.FC<Props> = ({ onSelectRoom, onClickCreateRoom }) => {
 
   return (
     <Stack
-      bg="teal.500"
+      bg="gray.900"
       width={isLargerThan700 ? "500px" : "100%"}
       alignItems="center"
       height={734}
@@ -59,7 +59,7 @@ const RecentRooms: React.FC<Props> = ({ onSelectRoom, onClickCreateRoom }) => {
 
           <IconButton
             colorScheme="gray"
-            color="teal.500"
+            color="gray.500"
             borderRadius={999}
             aria-label="Search database"
             bg="white"
@@ -69,17 +69,17 @@ const RecentRooms: React.FC<Props> = ({ onSelectRoom, onClickCreateRoom }) => {
           />
         </Box>
         <Stack w="100%" pl={4} pr={4}>
-          <InputGroup borderColor="teal.400">
+          <InputGroup borderColor="gray.400">
             <InputLeftAddon
-              bg="teal.400"
+              bg="gray.400"
               children={<SearchIcon color="white" />}
             />
             <Input
-              _hover={{ borderColor: "teal.400" }}
-              _focus={{ borderColor: "teal.400" }}
-              _active={{ borderColor: "teal.400" }}
+              _hover={{ borderColor: "gray.400" }}
+              _focus={{ borderColor: "gray.400" }}
+              _active={{ borderColor: "gray.400" }}
               outline="none"
-              bg="teal.400"
+              bg="gray.400"
               color="white"
               textColor="white"
               _placeholder={{ color: "white" }}
@@ -134,7 +134,7 @@ const RecentRooms: React.FC<Props> = ({ onSelectRoom, onClickCreateRoom }) => {
       <Box
         display="flex"
         w="100%"
-        bg="teal.400"
+        bg="gray.400"
         alignSelf="end"
         height={79}
         p={4}

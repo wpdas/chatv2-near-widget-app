@@ -15,7 +15,7 @@ const MessageParagraph: React.FC<Props> = ({ text, itsMe, onClickLink }) => {
       return (
         <Link
           as="b"
-          color={itsMe ? "teal.500" : "white"}
+          color={itsMe ? "gray.700" : "white"}
           key={word + Date.now()}
           onClick={() => onClickLink(word)}
         >
@@ -32,7 +32,7 @@ const MessageParagraph: React.FC<Props> = ({ text, itsMe, onClickLink }) => {
         fontSize="sm"
         color="white"
         mt={2}
-        bg="#349d99"
+        bg="gray.700"
         w="fit-content"
         p={4}
         mr={12}

@@ -16,7 +16,7 @@ const Loading: React.FC<{ pt?: number | string; height?: number }> = ({
         thickness="4px"
         speed="0.65s"
         emptyColor="gray.200"
-        color="teal.500"
+        color="#5AE691"
         size="xl"
       />
     </Box>

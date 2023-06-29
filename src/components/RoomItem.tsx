@@ -14,15 +14,15 @@ const RoomItem: React.FC<Props> = ({ name, onSelectRoom }) => {
       cursor="pointer"
       display="flex"
       alignItems="center"
-      bg="#38b2ac36"
+      bg="gray.600"
       p={2}
       borderRadius={6}
       _hover={{ backgroundColor: "#38b2ac68" }}
       onClick={() => onSelectRoom(name)}
     >
       <Avatar
-        bg="blue.50"
-        textColor="teal.600"
+        bg="gray.50"
+        textColor="gray.600"
         size="sm"
         name={normalizedName}
       />
